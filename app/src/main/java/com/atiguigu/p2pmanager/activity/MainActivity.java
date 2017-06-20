@@ -4,15 +4,20 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.atiguigu.p2pmanager.R;
 import com.atiguigu.p2pmanager.fragment.MainHomeFragment;
 import com.atiguigu.p2pmanager.fragment.MainInvestmentFragment;
 import com.atiguigu.p2pmanager.fragment.MainMoreFragment;
 import com.atiguigu.p2pmanager.fragment.MainPropertyFragment;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     RadioButton rbMore;
     @BindView(R.id.main_radioGroup)
     RadioGroup mainRadioGroup;
+
+    //用于判断是否退出的变量
+    private boolean isExit = false;
 
     /**
      * 4个用于显示不同页面的Fragment
@@ -160,5 +168,37 @@ public class MainActivity extends AppCompatActivity {
         if (propertyFragment != null){
             ft.hide(propertyFragment);
         }
+    }
+
+    /**
+     * 2S内双击退出
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+
+            if(isExit) {
+                //如果为真，退出。
+                finish();
+            }
+
+            //提示
+            Toast.makeText(MainActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+
+            isExit = true;
+
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    //2S后
+                    isExit = false;
+                }
+            },2000);
+
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }
