@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.atiguigu.p2pmanager.R;
+import com.atiguigu.p2pmanager.common.AppManager;
 import com.atiguigu.p2pmanager.fragment.MainHomeFragment;
 import com.atiguigu.p2pmanager.fragment.MainInvestmentFragment;
 import com.atiguigu.p2pmanager.fragment.MainMoreFragment;
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        AppManager.getInstance().addActivity(this);//加入任务栈中管理
 
         initView();
         initData();

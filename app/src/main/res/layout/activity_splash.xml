@@ -31,23 +31,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/splash_tv_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="版本："
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
+        android:layout_marginTop="170dp">
 
         <TextView
             android:id="@+id/splash_tv_versionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1.0"
+            android:text="版本：%1$s"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
-
 
     </LinearLayout>
 

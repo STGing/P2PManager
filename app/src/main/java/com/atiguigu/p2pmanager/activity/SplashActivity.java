@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.atiguigu.p2pmanager.R;
+import com.atiguigu.p2pmanager.common.AppManager;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -22,16 +23,24 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        AppManager.getInstance().addActivity(this);//加入任务栈中管理
+
         initView();
         initData();
     }
 
     private void initView() {
-        splash_tv_versionName = (TextView)findViewById(R.id.splash_tv_versionName);
-        splash_rl = (RelativeLayout)findViewById(R.id.splash_rl);
 
-        //设置版本号
-        splash_tv_versionName.setText(getVersionCode());
+        splash_rl = (RelativeLayout)findViewById(R.id.splash_rl);
+        splash_tv_versionName = (TextView)findViewById(R.id.splash_tv_versionName);
+
+
+        //设置版本号:第一种方法(直接获取版本号并设置)
+//        splash_tv_versionName.setText(getVersionCode());
+        //设置版本号:第二种方法(通过使用占位符)
+        String verson = String.format(splash_tv_versionName.getText().toString()
+        ,getVersionCode());
+        splash_tv_versionName.setText(verson);
     }
 
     /**
