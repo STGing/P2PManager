@@ -20,6 +20,7 @@ public class MainHomeFragment extends BaseFragment {
         textView = new TextView(mContext);
         textView.setTextColor(Color.RED);
         textView.setTextSize(15);
+
         return textView;
     }
 

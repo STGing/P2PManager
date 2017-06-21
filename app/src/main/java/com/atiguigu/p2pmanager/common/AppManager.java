@@ -74,7 +74,7 @@ public class AppManager {
     public void removeAllActivity(){
         
         //遍历删除所有
-        for(int i = stack.size(); i >= 0 ; i--) {
+        for(int i = stack.size()-1; i >= 0 ; i--) {
             Activity currentActivity = stack.get(i);
 
             if(currentActivity != null) {//如果找到以后

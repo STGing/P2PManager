@@ -17,6 +17,10 @@ public class MyApplication extends Application {
 
         mContext = this;
 
+        //1.初始化：异常捕获的工具类
+        //先不使用，程序OK后使用。
+        //CrashHandler.getInstance().init(mContext);
+
     }
 
 
