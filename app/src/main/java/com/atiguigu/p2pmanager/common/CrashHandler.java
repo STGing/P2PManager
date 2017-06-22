@@ -38,10 +38,6 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
     //用于格式化日期,作为日志文件名的一部分
     private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 
-
-    //系统默认的UncaughtException处理类
-    private Thread.UncaughtExceptionHandler mDefaultHandler;
-
     /**
      * 首先建立单例模式
      * @param t
@@ -70,9 +66,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
         //1.接管系统的异常
         Thread.setDefaultUncaughtExceptionHandler(this);
 
-        mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
-
-        //2.接受全局Context
+        //全局Context
         this.mContext = context;
     }
 
@@ -80,25 +74,10 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
     /**
      * 进行异常的处理
      * @param t
-     * @param ex
+     * @param e
      */
     @Override
-    public void uncaughtException(Thread t, Throwable ex) {
-
-        if (!handleException(ex) && mDefaultHandler != null) {
-            //如果没有自己处理则让系统默认的异常处理器来处理
-            mDefaultHandler.uncaughtException(t, ex);
-        } else {
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                Log.e(TAG, "error : ", e);
-            }
-            //退出程序
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
-        }
-
+    public void uncaughtException(Thread t, Throwable e) {
 
         /**
          * 分为三步：
@@ -108,58 +87,35 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
          */
 
         //1.提醒用户：因为使用Toast，(在主线程有效),使用分线程中的loop
-//        new Thread(){
-//            public void run(){
-//                Looper.prepare();
-//
-//                //在looper之间的代码位于主线程
-//                Toast.makeText(mContext, "程序出现异常，即将推出！", Toast.LENGTH_SHORT).show();
-//
-//                Looper.loop();
-//            }
-//        }.start();
-//
-//        //2.收集异常消息
-//        collectDeviceInfo(mContext);
-//        //保存错误消息到日志文件
-//        saveCatchInfo2File(e);
-//
-//        //3.退出程序
-//        AppManager.getInstance().removeAllActivity();//(因为要退出程序，所以将栈中的Activity移除)
-//
-//        android.os.Process.killProcess(android.os.Process.myPid());//结束进程
-//
-////        System.exit(0);//0表示正常退出虚拟机
-//        System.exit(1);//0表示正常退出虚拟机
-    }
-
-
-    /**
-     * 自定义处理异常
-     * @param e
-     * @return
-     */
-    private boolean handleException(Throwable e) {
-
-        if (e == null) {
-            return false;
-        }
-
-        //收集设备参数信息
-        collectDeviceInfo(mContext);
-
-        //使用Toast来显示异常信息
-        new Thread() {
-            @Override
-            public void run() {
+        new Thread(){
+            public void run(){
                 Looper.prepare();
-                Toast.makeText(mContext, "很抱歉,程序出现异常,即将退出.", Toast.LENGTH_SHORT).show();
+
+                //在looper之间的代码位于主线程
+                Toast.makeText(mContext, "程序出现异常，即将推出！", Toast.LENGTH_SHORT).show();
+
                 Looper.loop();
             }
         }.start();
-        //保存日志文件
+
+        //2.收集异常消息
+        collectDeviceInfo(mContext);
+        //保存错误消息到日志文件
         saveCatchInfo2File(e);
-        return true;
+
+        try {
+            //休眠3S，否则上面的因为没有执行完成，下面就会结束。
+            Thread.sleep(3000);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
+
+        //3.退出程序
+        AppManager.getInstance().removeAllActivity();//(因为要退出程序，所以将栈中的Activity移除)
+
+        android.os.Process.killProcess(android.os.Process.myPid());//结束进程
+
+        System.exit(0);//0表示正常退出虚拟机
     }
 
 

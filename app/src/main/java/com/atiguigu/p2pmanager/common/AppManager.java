@@ -71,17 +71,13 @@ public class AppManager {
     /**
      * 4.删除所以的Activity
      */
-    public void removeAllActivity(){
-        
-        //遍历删除所有
-        for(int i = stack.size()-1; i >= 0 ; i--) {
-            Activity currentActivity = stack.get(i);
-
-            if(currentActivity != null) {//如果找到以后
-
-                currentActivity.finish();//结束要移除的Activity
-                stack.remove(i);//stack中移除
+    public void removeAllActivity() {
+        for (Activity activity : stack) {
+            if (activity != null) {
+                activity.finish();
             }
         }
+        stack.clear();
     }
+
 }
