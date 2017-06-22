@@ -32,4 +32,10 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     //联网请求--ok-go
     compile 'com.lzy.net:okgo:3.0.1'
+    //广告轮播
+    compile 'com.youth.banner:banner:1.4.9'
+    //gson
+    compile 'com.google.code.gson:gson:2.8.1'
+    //picasso加载图片
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

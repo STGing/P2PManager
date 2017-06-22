@@ -25,6 +25,11 @@ public abstract class BaseFragment extends Fragment {
     }
 
     /**
+     * 初始化title
+     */
+    public abstract void initTitle();
+
+    /**
      * 初始化View
      * @return
      */
@@ -33,8 +38,15 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initTitle();
         initData();
+        initListener();
     }
+
+    /**
+     * 用于事件的监听器
+     */
+    public abstract void initListener();
 
     /**
      * 用于绑定数据

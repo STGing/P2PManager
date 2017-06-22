@@ -15,12 +15,22 @@ public class MainInvestmentFragment extends BaseFragment {
     TextView textView;
 
     @Override
+    public void initTitle() {
+
+    }
+
+    @Override
     public View initView() {
 
         textView = new TextView(mContext);
         textView.setTextColor(Color.RED);
         textView.setTextSize(15);
         return textView;
+    }
+
+    @Override
+    public void initListener() {
+
     }
 
     @Override

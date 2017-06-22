@@ -13,11 +13,12 @@ import com.lzy.okgo.model.Response;
 
 public class NetConnect {
 
+
     /**
      * GET 网络请求
      * 参数：上下文   地址  缓存key   接口
      */
-    public void get(Context context, String url, String key, final NetListener listener){
+    public static void get(Context context, String url, String key, final NetListener listener){
 
         OkGo.<String>get(url)
                 .tag(context)
