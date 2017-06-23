@@ -116,6 +116,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
         android.os.Process.killProcess(android.os.Process.myPid());//结束进程
 
         System.exit(0);//0表示正常退出虚拟机
+
     }
 
 

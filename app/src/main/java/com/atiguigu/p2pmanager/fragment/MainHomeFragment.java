@@ -10,6 +10,7 @@ import com.atiguigu.p2pmanager.base.BaseFragment;
 import com.atiguigu.p2pmanager.bean.IndexBean;
 import com.atiguigu.p2pmanager.common.AppNetConfig;
 import com.atiguigu.p2pmanager.utils.NetConnect;
+import com.atiguigu.p2pmanager.view.ProgressView;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
@@ -43,6 +44,8 @@ public class MainHomeFragment extends BaseFragment {
     @BindView(R.id.tv_home_yearrate)
     TextView tvHomeYearrate;
     Unbinder unbinder;
+    @BindView(R.id.home_fragment_progressView)
+    ProgressView homeFragmentProgressView;
 
     private List<String> list = new ArrayList<>();//用于存放图片地址的集合
 
@@ -90,10 +93,26 @@ public class MainHomeFragment extends BaseFragment {
 
         //初始化Banner
         initBanner(indexBean);
+
+        //初始化ProgressView
+        initProgressView(indexBean);
+
+    }
+
+    /**
+     * 初始化ProgressVIew
+     * @param indexBean
+     */
+    private void initProgressView(IndexBean indexBean) {
+        String progress = indexBean.getProInfo().getProgress();
+
+        //设置自定义ProgressView的进度
+        homeFragmentProgressView.setSweepAngle(Integer.parseInt(progress));
     }
 
     /**
      * 初始化Banner
+     *
      * @param indexBean
      */
     private void initBanner(IndexBean indexBean) {
@@ -102,7 +121,7 @@ public class MainHomeFragment extends BaseFragment {
         //将数据放入集合中
         for (int i = 0; i < imageArr.size(); i++) {
             String imaurl = imageArr.get(i).getIMAURL();
-            list.add(AppNetConfig.BASE_URL+imaurl);
+            list.add(AppNetConfig.BASE_URL + imaurl);
         }
         //设置图片加载器
         homeFragmentBanner.setImageLoader(new GlideImageLoader());
@@ -117,7 +136,6 @@ public class MainHomeFragment extends BaseFragment {
     public void initListener() {
 
     }
-
 
 
     @Override
@@ -139,6 +157,7 @@ public class MainHomeFragment extends BaseFragment {
                 break;
         }
     }
+
 
     /**
      * 用于广告轮播设置图片
