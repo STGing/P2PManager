@@ -31,7 +31,6 @@ public class ProgressView extends View {
     private int height;//控件本身的宽
     private int strokeWidth = 40;//外面描边的宽度;
     private int sweepAngle;//滑动的角度
-    private String textString = "90";//圆中间显示的文字
     private int textPaintColor;//文字的颜色
 
     /**
@@ -127,7 +126,7 @@ public class ProgressView extends View {
         paint.setStrokeWidth(0);//去掉描边，否则导致文字不显示
         paint.setTextSize(40);
         //画文字：参数：显示的文字，文字左下角的坐标x,y,画笔
-        String text = textString + "%";
+        String text = sweepAngle + "%";
 
         Rect rect = new Rect();
         paint.getTextBounds(text,0,text.length(),rect);

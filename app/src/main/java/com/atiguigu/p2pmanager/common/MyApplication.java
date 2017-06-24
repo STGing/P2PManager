@@ -2,6 +2,7 @@ package com.atiguigu.p2pmanager.common;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Handler;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
@@ -16,12 +17,17 @@ import okhttp3.OkHttpClient;
 public class MyApplication extends Application {
 
     private static Context mContext;
+    private static Handler handler;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         mContext = this;
+
+        //初始化handler
+        handler = new Handler();
 
         //初始化：联网请求的OK-GO
         initOkGo();
@@ -45,8 +51,27 @@ public class MyApplication extends Application {
                 //.addCommonParams(params);                       //全局公共参数
     }
 
-
+    /**
+     * 获得上下文
+     * @return
+     */
     public static Context getContext() {
         return mContext;
+    }
+
+    /**
+     * 获得主线程ID
+     * @return
+     */
+    public static int getMainThreadId() {
+        return android.os.Process.myPid();
+    }
+
+    /**
+     * 获得handler
+     * @return
+     */
+    public static Handler getHandler() {
+        return handler;
     }
 }
