@@ -1,7 +1,6 @@
 package com.atiguigu.p2pmanager.fragment;
 
 import android.view.View;
-import android.widget.TextView;
 
 import com.atiguigu.p2pmanager.base.BaseFragment;
 
@@ -33,17 +32,17 @@ public class MainPropertyFragment extends BaseFragment {
     }
 
     @Override
-    protected int getSelfLayoutID() {
+    public int getSelfLayoutID() {
         return 0;
     }
 
     @Override
-    protected String getSelfUrl() {
+    public String getSelfUrl() {
         return null;
     }
 
     @Override
-    protected void getNetResult(String json) {
+    public void getNetResult(String json) {
 
     }
 }

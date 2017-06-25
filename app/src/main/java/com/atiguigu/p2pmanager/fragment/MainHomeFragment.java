@@ -69,7 +69,7 @@ public class MainHomeFragment extends BaseFragment {
      * @return
      */
     @Override
-    protected int getSelfLayoutID() {
+    public int getSelfLayoutID() {
         return  R.layout.fragment_home;
     }
 
@@ -78,7 +78,7 @@ public class MainHomeFragment extends BaseFragment {
      * @return
      */
     @Override
-    protected String getSelfUrl() {
+    public String getSelfUrl() {
         return AppNetConfig.INDEX;
     }
 
@@ -87,7 +87,7 @@ public class MainHomeFragment extends BaseFragment {
      * @param json
      */
     @Override
-    protected void getNetResult(String json) {
+    public void getNetResult(String json) {
         //1.使用gson解析
         IndexBean indexBean = new Gson().fromJson(json, IndexBean.class);
         //2.使用手动解析json数据
@@ -139,11 +139,6 @@ public class MainHomeFragment extends BaseFragment {
     }
 
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 
     @OnClick({R.id.base_back, R.id.base_setting, R.id.tv_home_product, R.id.tv_home_yearrate})
     public void onViewClicked(View view) {

@@ -112,12 +112,12 @@ public class MainInvestmentFragment extends BaseFragment implements View.OnClick
     }
 
     @Override
-    protected int getSelfLayoutID() {
+    public int getSelfLayoutID() {
         return R.layout.fragment_invest;
     }
 
     @Override
-    protected String getSelfUrl() {
+    public String getSelfUrl() {
         return "";
     }
 

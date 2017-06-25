@@ -62,12 +62,12 @@ public class InvestRecommondPageFragment extends BaseFragment {
     }
 
     @Override
-    protected int getSelfLayoutID() {
+    public int getSelfLayoutID() {
         return R.layout.fragment_invest_recommand;
     }
 
     @Override
-    protected String getSelfUrl() {
+    public String getSelfUrl() {
         return null;
     }
 

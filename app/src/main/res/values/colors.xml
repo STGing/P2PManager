@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    //理财页面的：全部页面
+    <color name="divider_line">#e1e1e1</color>
+    <color name="product_detail_common">#666666</color>
+    <color name="product_red_common">#e84768</color>
+
 </resources>

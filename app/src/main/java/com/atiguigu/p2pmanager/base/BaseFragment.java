@@ -106,16 +106,16 @@ public abstract class BaseFragment extends Fragment {
      * 用户子类返回自身的资源
      * @return
      */
-    protected abstract int getSelfLayoutID();
+    public abstract int getSelfLayoutID();
 
     /**
      * 子类使用自己的Url
      */
-    protected abstract String getSelfUrl();
+    public abstract String getSelfUrl();
 
     /**
      * 子类获取联网结果
      * @param json
      */
-    protected void getNetResult(String json){};
+    public void getNetResult(String json){};
 }

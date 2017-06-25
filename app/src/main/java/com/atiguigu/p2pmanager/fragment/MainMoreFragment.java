@@ -2,6 +2,7 @@ package com.atiguigu.p2pmanager.fragment;
 
 import android.view.View;
 
+import com.atiguigu.p2pmanager.R;
 import com.atiguigu.p2pmanager.base.BaseFragment;
 
 /**
@@ -33,17 +34,17 @@ public class MainMoreFragment extends BaseFragment {
     }
 
     @Override
-    protected int getSelfLayoutID() {
-        return 0;
+    public int getSelfLayoutID() {
+        return R.layout.fragment_invest_all;
     }
 
     @Override
-    protected String getSelfUrl() {
+    public String getSelfUrl() {
         return null;
     }
 
     @Override
-    protected void getNetResult(String json) {
+    public void getNetResult(String json) {
 
     }
 }

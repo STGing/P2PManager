@@ -30,12 +30,12 @@ public class InvestHotPageFragment extends BaseFragment {
     }
 
     @Override
-    protected int getSelfLayoutID() {
+    public int getSelfLayoutID() {
         return 0;
     }
 
     @Override
-    protected String getSelfUrl() {
+    public String getSelfUrl() {
         return null;
     }
 }
