@@ -9,7 +9,6 @@ import com.atiguigu.p2pmanager.R;
 import com.atiguigu.p2pmanager.base.BaseFragment;
 import com.atiguigu.p2pmanager.bean.IndexBean;
 import com.atiguigu.p2pmanager.common.AppNetConfig;
-import com.atiguigu.p2pmanager.utils.NetConnect;
 import com.atiguigu.p2pmanager.view.ProgressView;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -20,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
@@ -51,10 +49,8 @@ public class MainHomeFragment extends BaseFragment {
 
     @Override
     public View initView() {
-        View rootView = View.inflate(mContext, R.layout.fragment_home, null);
-        unbinder = ButterKnife.bind(this, rootView);
 
-        return rootView;
+        return null;
     }
 
     @Override
@@ -66,27 +62,32 @@ public class MainHomeFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        //数据联网请求获取
-        NetConnect.get(mContext, AppNetConfig.INDEX, "homeFragment", new NetConnect.NetListener() {
-            @Override
-            public void onSuccess(String json) {
-                //联网成功
-                //解析json数据
-
-                progressData(json);
-            }
-
-            @Override
-            public void onFailure(String message) {
-
-            }
-        });
     }
 
     /**
-     * 处理联网请求获取到的数据
+     * 根据子类的资源创建对应视图
+     * @return
      */
-    private void progressData(String json) {
+    @Override
+    protected int getSelfLayoutID() {
+        return  R.layout.fragment_home;
+    }
+
+    /**
+     * 根据子类的Url来进行联网
+     * @return
+     */
+    @Override
+    protected String getSelfUrl() {
+        return AppNetConfig.INDEX;
+    }
+
+    /**
+     * 联网成功返回的json数据
+     * @param json
+     */
+    @Override
+    protected void getNetResult(String json) {
         //1.使用gson解析
         IndexBean indexBean = new Gson().fromJson(json, IndexBean.class);
         //2.使用手动解析json数据
@@ -96,8 +97,9 @@ public class MainHomeFragment extends BaseFragment {
 
         //初始化ProgressView
         initProgressView(indexBean);
-
     }
+
+
 
     /**
      * 初始化ProgressVIew
@@ -112,7 +114,6 @@ public class MainHomeFragment extends BaseFragment {
 
     /**
      * 初始化Banner
-     *
      * @param indexBean
      */
     private void initBanner(IndexBean indexBean) {

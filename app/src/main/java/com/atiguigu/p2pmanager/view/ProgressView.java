@@ -89,8 +89,8 @@ public class ProgressView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         //在测量方法中，获取自身所处的宽和高
-        width = getWidth();
-        height = getHeight();
+        width = getMeasuredWidth();
+        height = getMeasuredHeight();
     }
 
     /**

@@ -1,17 +1,15 @@
-package com.atiguigu.p2pmanager.fragment;
+package com.atiguigu.p2pmanager.investpager;
 
 import android.view.View;
-import android.widget.TextView;
 
+import com.atiguigu.p2pmanager.R;
 import com.atiguigu.p2pmanager.base.BaseFragment;
 
 /**
- * Created by PC on 2017/6/20.
+ * Created by PC on 2017/6/24.
  */
 
-public class MainPropertyFragment extends BaseFragment {
-
-
+public class InvestAllPageFragment extends BaseFragment {
     @Override
     public void initTitle() {
 
@@ -19,7 +17,6 @@ public class MainPropertyFragment extends BaseFragment {
 
     @Override
     public View initView() {
-
         return null;
     }
 
@@ -30,20 +27,16 @@ public class MainPropertyFragment extends BaseFragment {
 
     @Override
     public void initData() {
+
     }
 
     @Override
     protected int getSelfLayoutID() {
-        return 0;
+        return R.layout.fragment_invest_all;
     }
 
     @Override
     protected String getSelfUrl() {
         return null;
-    }
-
-    @Override
-    protected void getNetResult(String json) {
-
     }
 }

@@ -1,8 +1,6 @@
 package com.atiguigu.p2pmanager.fragment;
 
-import android.graphics.Color;
 import android.view.View;
-import android.widget.TextView;
 
 import com.atiguigu.p2pmanager.base.BaseFragment;
 
@@ -12,7 +10,6 @@ import com.atiguigu.p2pmanager.base.BaseFragment;
 
 public class MainMoreFragment extends BaseFragment {
 
-    TextView textView;
 
     @Override
     public void initTitle() {
@@ -22,10 +19,8 @@ public class MainMoreFragment extends BaseFragment {
     @Override
     public View initView() {
 
-        textView = new TextView(mContext);
-        textView.setTextColor(Color.RED);
-        textView.setTextSize(15);
-        return textView;
+
+        return null;
     }
 
     @Override
@@ -35,6 +30,20 @@ public class MainMoreFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        textView.setText("这里是更多页面");
+    }
+
+    @Override
+    protected int getSelfLayoutID() {
+        return 0;
+    }
+
+    @Override
+    protected String getSelfUrl() {
+        return null;
+    }
+
+    @Override
+    protected void getNetResult(String json) {
+
     }
 }
