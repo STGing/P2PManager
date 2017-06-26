@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--应用底部的风格设置-->
     <style name="MainRadioButtonStyle">
         <item name="android:layout_marginTop">6dp</item>
         <item name="android:layout_width">0dp</item>
@@ -18,6 +19,21 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@drawable/main_radiobutton_textcolor_selector</item>
+    </style>
+
+    <!--用户界面下面的3行字的风格-->
+    <style name="LoginStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:drawableRight">@android:color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:textColor">@color/product_detail_common</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

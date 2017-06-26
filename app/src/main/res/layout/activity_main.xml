@@ -29,19 +29,19 @@
             android:id="@+id/rb_investment"
             style="@style/MainRadioButtonStyle"
             android:drawableTop="@drawable/main_rb_home"
-            android:text="首页" />
+            android:text="投资" />
 
         <RadioButton
             android:id="@+id/rb_property"
             style="@style/MainRadioButtonStyle"
             android:drawableTop="@drawable/main_rb_home"
-            android:text="首页" />
+            android:text="资产" />
 
         <RadioButton
             android:id="@+id/rb_more"
             style="@style/MainRadioButtonStyle"
             android:drawableTop="@drawable/main_rb_home"
-            android:text="首页" />
+            android:text="更多" />
 
     </RadioGroup>
 

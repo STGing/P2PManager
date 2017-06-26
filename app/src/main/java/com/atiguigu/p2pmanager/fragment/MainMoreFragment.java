@@ -12,6 +12,8 @@ import com.atiguigu.p2pmanager.base.BaseFragment;
 public class MainMoreFragment extends BaseFragment {
 
 
+
+
     @Override
     public void initTitle() {
 
@@ -31,11 +33,12 @@ public class MainMoreFragment extends BaseFragment {
 
     @Override
     public void initData() {
+
     }
 
     @Override
     public int getSelfLayoutID() {
-        return R.layout.fragment_invest_all;
+        return R.layout.fragment_more;
     }
 
     @Override
@@ -43,8 +46,6 @@ public class MainMoreFragment extends BaseFragment {
         return null;
     }
 
-    @Override
-    public void getNetResult(String json) {
 
-    }
+
 }

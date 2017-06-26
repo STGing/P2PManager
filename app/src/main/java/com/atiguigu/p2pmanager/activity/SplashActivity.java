@@ -3,33 +3,38 @@ package com.atiguigu.p2pmanager.activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.atiguigu.p2pmanager.R;
-import com.atiguigu.p2pmanager.common.AppManager;
+import com.atiguigu.p2pmanager.base.BaseActivity;
+import com.atiguigu.p2pmanager.utils.SPUtils;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     private TextView splash_tv_versionName;
     private RelativeLayout splash_rl;
 
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_splash);
+//
+//        AppManager.getInstance().addActivity(this);//加入任务栈中管理
+//
+//        initView();
+//        initData();
+//    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-
-        AppManager.getInstance().addActivity(this);//加入任务栈中管理
-
-        initView();
-        initData();
+    public int getLayoutID() {
+        return R.layout.activity_splash;
     }
 
-    private void initView() {
+    public void initView() {
 
         splash_rl = (RelativeLayout)findViewById(R.id.splash_rl);
         splash_tv_versionName = (TextView)findViewById(R.id.splash_tv_versionName);
@@ -63,7 +68,7 @@ public class SplashActivity extends AppCompatActivity {
         return "1";
     }
 
-    private void initData() {
+    public void initData() {
 
         /**
          * 第一种方式:通过Timer，在2S后跳转页面
@@ -122,12 +127,24 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void initListener() {
+
+    }
+
     /**
      * 判断是否登陆过。
      * @return
      */
     private boolean isLogin() {
-        return true;
+//        return true;
+//        return false;
+        //从本地获取保存的json数据，如果有，说明登陆过
+        String json = (String) SPUtils.get(SplashActivity.this, "loginJson", "");
+        if(!TextUtils.isEmpty(json)) {
+            return true;
+        }
+        return false;
     }
 
 

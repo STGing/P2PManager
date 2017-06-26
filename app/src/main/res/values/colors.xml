@@ -9,4 +9,6 @@
     <color name="product_detail_common">#666666</color>
     <color name="product_red_common">#e84768</color>
 
+    <!--资产页面-->
+    <color name="my_title_bg">#28baed</color>
 </resources>

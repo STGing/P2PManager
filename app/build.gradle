@@ -24,20 +24,22 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //使用注解
+    //联网请求--ok-go
+    //广告轮播
+    //gson
+    //picasso加载图片
+    //picasso加载图片的样式
+    //流式布局标签
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    //使用注解
     compile 'com.jakewharton:butterknife:8.6.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
-    //联网请求--ok-go
     compile 'com.lzy.net:okgo:3.0.1'
-    //广告轮播
     compile 'com.youth.banner:banner:1.4.9'
-    //gson
     compile 'com.google.code.gson:gson:2.8.1'
-    //picasso加载图片
     compile 'com.squareup.picasso:picasso:2.5.2'
-    //流式布局标签
+    compile 'jp.wasabeef:picasso-transformations:2.1.2'
     compile 'com.zhy:flowlayout-lib:1.0.3'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
 }

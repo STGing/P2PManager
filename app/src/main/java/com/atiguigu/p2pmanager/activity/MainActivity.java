@@ -1,9 +1,7 @@
 package com.atiguigu.p2pmanager.activity;
 
-import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
@@ -11,7 +9,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.atiguigu.p2pmanager.R;
-import com.atiguigu.p2pmanager.common.AppManager;
+import com.atiguigu.p2pmanager.base.BaseActivity;
 import com.atiguigu.p2pmanager.fragment.MainHomeFragment;
 import com.atiguigu.p2pmanager.fragment.MainInvestmentFragment;
 import com.atiguigu.p2pmanager.fragment.MainMoreFragment;
@@ -21,9 +19,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @BindView(R.id.main_frameLayout)
     FrameLayout mainFrameLayout;
@@ -49,26 +46,31 @@ public class MainActivity extends AppCompatActivity {
     private MainPropertyFragment propertyFragment;
     private MainMoreFragment moreFragment;
 
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//        ButterKnife.bind(this);
+//
+//        AppManager.getInstance().addActivity(this);//加入任务栈中管理
+//
+//        initView();
+//        initData();
+//        initListener();
+//
+//        //默认选择第一个页面
+//        mainRadioGroup.check(R.id.rb_home);
+//    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-
-        AppManager.getInstance().addActivity(this);//加入任务栈中管理
-
-        initView();
-        initData();
-        initListener();
-
-        //默认选择第一个页面
-        mainRadioGroup.check(R.id.rb_home);
+    public int getLayoutID() {
+        return R.layout.activity_main;
     }
 
     /**
      * 初始化View
      */
-    private void initView() {
+    public void initView() {
 
 
     }
@@ -76,14 +78,15 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 初始化数据
      */
-    private void initData() {
-
+    public void initData() {
+        //默认选择第一个页面
+        mainRadioGroup.check(R.id.rb_home);
     }
 
     /**
      * 初始化监听器
      */
-    private void initListener() {
+    public void initListener() {
         mainRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
