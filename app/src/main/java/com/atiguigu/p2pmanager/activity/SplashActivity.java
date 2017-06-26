@@ -139,9 +139,9 @@ public class SplashActivity extends BaseActivity {
     private boolean isLogin() {
 //        return true;
 //        return false;
-        //从本地获取保存的json数据，如果有，说明登陆过
-        String json = (String) SPUtils.get(SplashActivity.this, "loginJson", "");
-        if(!TextUtils.isEmpty(json)) {
+        //从本地获取保存的数据，如果有，说明登陆过
+        String name = (String) SPUtils.get(SplashActivity.this, "name", "");
+        if(!TextUtils.isEmpty(name)) {
             return true;
         }
         return false;

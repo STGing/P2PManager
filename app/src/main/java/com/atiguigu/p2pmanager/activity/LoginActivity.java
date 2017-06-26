@@ -14,8 +14,6 @@ import com.atiguigu.p2pmanager.base.BaseActivity;
 import com.atiguigu.p2pmanager.bean.LoginBean;
 import com.atiguigu.p2pmanager.common.AppNetConfig;
 import com.atiguigu.p2pmanager.utils.NetConnect;
-import com.atiguigu.p2pmanager.utils.SPUtils;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -124,10 +122,22 @@ public class LoginActivity extends BaseActivity {
                                 //如果OK，说明登陆成功
 
                                 //解析json数据
-                                LoginBean loginBean = new Gson().fromJson(json, LoginBean.class);
+//                                LoginBean loginBean = new Gson().fromJson(json, LoginBean.class);
+
+
+                                JSONObject data = object.getJSONObject("data");
+                                String name = data.getString("name");
+                                String imageurl = data.getString("imageurl");
+                                String iscredit = data.getString("iscredit");
+                                String phone = data.getString("phone");
+                                LoginBean bean = new LoginBean();
+                                bean.setIscredit(iscredit);
+                                bean.setName(name);
+                                bean.setPhone(phone);
+                                bean.setImageurl(imageurl);
 
                                 //保存数据
-                                SPUtils.put(LoginActivity.this,"loginJson",json);
+                                saveData(bean);
 
                                 //跳转页面
                                 startActivity(new Intent(LoginActivity.this,MainActivity.class));

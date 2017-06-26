@@ -1,5 +1,6 @@
 package com.atiguigu.p2pmanager.fragment;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -7,10 +8,8 @@ import android.widget.TextView;
 
 import com.atiguigu.p2pmanager.R;
 import com.atiguigu.p2pmanager.base.BaseFragment;
-import com.atiguigu.p2pmanager.bean.LoginBean;
 import com.atiguigu.p2pmanager.common.AppNetConfig;
 import com.atiguigu.p2pmanager.utils.SPUtils;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -78,11 +77,8 @@ public class MainPropertyFragment extends BaseFragment {
 
         //设置用户名
         //从保存的获取数据
-        String json = (String) SPUtils.get(mContext, "loginJson", "");
-        //解析
-        LoginBean loginBean = new Gson().fromJson(json, LoginBean.class);
-        if(loginBean != null) {
-            String name = loginBean.getName();
+        String name = (String) SPUtils.get(mContext, "name", "");
+        if(!TextUtils.isEmpty(name)) {
             tvMeName.setText(name);
         }
 
