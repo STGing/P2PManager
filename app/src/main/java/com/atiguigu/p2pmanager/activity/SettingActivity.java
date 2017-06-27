@@ -2,6 +2,7 @@ package com.atiguigu.p2pmanager.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.atiguigu.p2pmanager.R;
 import com.atiguigu.p2pmanager.base.BaseActivity;
+import com.atiguigu.p2pmanager.common.AppManager;
 import com.atiguigu.p2pmanager.common.AppNetConfig;
 import com.atiguigu.p2pmanager.utils.SPUtils;
 import com.squareup.picasso.Picasso;
@@ -112,6 +114,26 @@ public class SettingActivity extends BaseActivity {
                             .show();
             }
         });
+
+        //点击退出登录
+        btnUserLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /**
+                 * 1.清空所有activity
+                 * 2.清空SP保存的信息
+                 * 3.跳转到登陆界面
+                 */
+                //1.
+                AppManager.getInstance().removeAllActivity();
+                //2.
+                SPUtils.clear(SettingActivity.this);
+                //3.
+                startActivity(new Intent(SettingActivity.this,LoginActivity.class));
+            }
+        });
+
+
     }
 
     /**

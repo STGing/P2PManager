@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.atiguigu.p2pmanager.R;
+import com.atiguigu.p2pmanager.activity.PayActivity;
 import com.atiguigu.p2pmanager.activity.SettingActivity;
 import com.atiguigu.p2pmanager.base.BaseFragment;
 import com.atiguigu.p2pmanager.common.AppNetConfig;
@@ -68,6 +69,16 @@ public class MainPropertyFragment extends BaseFragment {
                 startActivity(new Intent(mContext,SettingActivity.class));
             }
         });
+
+        //点击充值的事件处理
+        recharge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到充值界面
+                startActivity(new Intent(mContext,PayActivity.class));
+            }
+        });
+
 
     }
 
