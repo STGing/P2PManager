@@ -8,8 +8,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.atiguigu.p2pmanager.R;
+import com.atiguigu.p2pmanager.activity.InvestActivity;
+import com.atiguigu.p2pmanager.activity.InvestManagerActivity;
 import com.atiguigu.p2pmanager.activity.PayActivity;
+import com.atiguigu.p2pmanager.activity.PropertyActivity;
 import com.atiguigu.p2pmanager.activity.SettingActivity;
+import com.atiguigu.p2pmanager.activity.WithdrawActivity;
 import com.atiguigu.p2pmanager.base.BaseFragment;
 import com.atiguigu.p2pmanager.common.AppNetConfig;
 import com.atiguigu.p2pmanager.utils.SPUtils;
@@ -80,6 +84,42 @@ public class MainPropertyFragment extends BaseFragment {
         });
 
 
+        //点击提现
+        withdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到提现界面
+                startActivity(new Intent(mContext,WithdrawActivity.class));
+            }
+        });
+
+
+        //点击投资管理
+        llTouzi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到投资管理界面
+                startActivity(new Intent(mContext,InvestActivity.class));
+            }
+        });
+
+        //点击投资管理（直观）
+        llTouziZhiguan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到投资管理界面
+                startActivity(new Intent(mContext,InvestManagerActivity.class));
+            }
+        });
+
+        //点击资产管理
+        llZichan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到投资管理界面
+                startActivity(new Intent(mContext,PropertyActivity.class));
+            }
+        });
     }
 
     @Override

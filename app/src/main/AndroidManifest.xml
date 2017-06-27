@@ -5,7 +5,7 @@
     <!-- 读写本地文件的权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--联网权限-->
+    <!-- 联网权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -31,7 +31,7 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.SettingActivity" />
-        <activity android:name=".activity.PayActivity"></activity>
+        <activity android:name=".activity.PayActivity" />
 
         <!-- alipay sdk begin -->
         <activity
@@ -41,6 +41,10 @@
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <!-- alipay sdk end -->
+        <activity android:name=".activity.WithdrawActivity" />
+        <activity android:name=".activity.InvestActivity" />
+        <activity android:name=".activity.InvestManagerActivity" />
+        <activity android:name=".activity.PropertyActivity"></activity>
     </application>
 
 </manifest>
