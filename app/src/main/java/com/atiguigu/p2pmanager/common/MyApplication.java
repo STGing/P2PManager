@@ -8,6 +8,11 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
 
+import cn.finalteam.galleryfinal.CoreConfig;
+import cn.finalteam.galleryfinal.FunctionConfig;
+import cn.finalteam.galleryfinal.GalleryFinal;
+import cn.finalteam.galleryfinal.ImageLoader;
+import cn.finalteam.galleryfinal.ThemeConfig;
 import okhttp3.OkHttpClient;
 
 /**
@@ -32,10 +37,37 @@ public class MyApplication extends Application {
         //初始化：联网请求的OK-GO
         initOkGo();
 
+        //初始化：GalleryFinal
+        initGalleryFinal();
+
         //初始化：异常捕获的工具类
         //先不使用，程序OK后使用。
 //        CrashHandler.getInstance().init(mContext);
 
+    }
+
+
+    private void initGalleryFinal() {
+        //设置主题
+        //ThemeConfig.CYAN
+        ThemeConfig theme = new ThemeConfig.Builder()
+                .build();
+        //配置功能
+        FunctionConfig functionConfig = new FunctionConfig.Builder()
+                .setEnableCamera(true)
+                .setEnableEdit(true)
+                .setEnableCrop(true)
+                .setEnableRotate(true)
+                .setCropSquare(true)
+                .setEnablePreview(true)
+                .build();
+
+        //配置imageloader
+        ImageLoader imageloader = new PicassoImageLoader();
+        CoreConfig coreConfig =
+                new CoreConfig.Builder(this, imageloader, theme)
+                        .setFunctionConfig(functionConfig).build();
+        GalleryFinal.init(coreConfig);
     }
 
     private void initOkGo() {

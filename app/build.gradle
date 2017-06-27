@@ -42,4 +42,6 @@ dependencies {
     compile 'com.zhy:flowlayout-lib:1.0.3'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    //调用系统拍照，选择系统图片
+    compile 'cn.finalteam:galleryfinal:1.4.8.7'
 }
