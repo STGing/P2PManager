@@ -1,5 +1,6 @@
 package com.atiguigu.p2pmanager.activity;
 
+import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
@@ -9,11 +10,13 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.atiguigu.p2pmanager.R;
+import com.atiguigu.p2pmanager.activity.gesture.GestureVerifyActivity;
 import com.atiguigu.p2pmanager.base.BaseActivity;
 import com.atiguigu.p2pmanager.fragment.MainHomeFragment;
 import com.atiguigu.p2pmanager.fragment.MainInvestmentFragment;
 import com.atiguigu.p2pmanager.fragment.MainMoreFragment;
 import com.atiguigu.p2pmanager.fragment.MainPropertyFragment;
+import com.atiguigu.p2pmanager.utils.SPUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -81,6 +84,13 @@ public class MainActivity extends BaseActivity {
     public void initData() {
         //默认选择第一个页面
         mainRadioGroup.check(R.id.rb_home);
+
+        //在进入主页面的时候，判断有没有设置过手势密码
+        boolean isChecked = (boolean) SPUtils.get(this, "isChecked", false);
+        if(isChecked) {
+            //设置过，就要验证
+            startActivity(new Intent(this, GestureVerifyActivity.class));
+        }
     }
 
     /**

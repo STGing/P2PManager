@@ -36,4 +36,15 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!--更多页面的风格-->
+    <style name="MoreTextStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:textColor">@color/more_text</item>
+        <item name="android:textSize">25sp</item>
+
+    </style>
+
 </resources>

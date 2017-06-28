@@ -45,6 +45,8 @@
         <activity android:name=".activity.InvestActivity" />
         <activity android:name=".activity.InvestManagerActivity" />
         <activity android:name=".activity.PropertyActivity"></activity>
+        <activity android:name=".activity.gesture.GestureEditActivity"/>
+        <activity android:name=".activity.gesture.GestureVerifyActivity"/>
     </application>
 
 </manifest>

@@ -11,4 +11,8 @@
 
     <!--资产页面-->
     <color name="my_title_bg">#28baed</color>
+
+    <!--更多页面-->
+    <color name="more_text">#5A6E9E</color>
+    <color name="round_red_common">#DC143C</color>
 </resources>
